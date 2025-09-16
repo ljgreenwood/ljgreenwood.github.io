@@ -30,11 +30,28 @@ function Home() {
           </li>
           <li>
             <button
-              onClick={() => window.open("/#/resume", "_blank")}
+              onClick={() => {
+                if (window.innerWidth >= 512) {
+                  // Large screen → open resume page
+                  window.open("/#/resume", "_blank");
+                } else {
+                  // Small screen → download PDF
+                  const link = document.createElement("a");
+                  link.href = "/webresume.pdf";
+                  link.download = "lucas_greenwood_resume.pdf";
+                  link.click();
+                }
+              }}
               className="hover:underline text-left"
             >
               resume/
             </button>
+            {/* <button
+              onClick={() => window.open("/#/resume", "_blank")}
+              className="hover:underline text-left"
+            >
+              resume/
+            </button> */}
           </li>
           <li>
             <button

@@ -1,46 +1,32 @@
-// ResumeViewer.tsx
+// Resume.tsx
 import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-// Load worker from CDN
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+pdfjs.GlobalWorkerOptions.workerSrc = "./pdf.worker.min.mjs";
 
 export default function Resume() {
   const [numPages, setNumPages] = useState<number>(0);
 
-  // const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
-  //   setNumPages(numPages);
-  // };
-
   return (
-    //     <div className="w-screen h-screen bg-gray-100 flex flex-col">
-    //   <div className="flex-1">
-    //     <Document file="/webresume.pdf"></Document>
-    //   </div>
-    // </div>
-    <div className="flex justify-center w-full overflow-x-hidden px-2">
+    <div className="flex justify-center w-full px-2 bg-white">
       <Document
         file="/webresume.pdf"
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
         loading={<p>Loading PDF…</p>}
-        className="flex flex-col items-center"
+        className="flex flex-col items-center bg-white"
       >
         {Array.from({ length: numPages }, (_, i) => (
-          <Page
-            key={i + 1}
-            pageNumber={i + 1}
-            width={Math.min(window.innerWidth - 32, 800)} // responsive cap
-            className="shadow-md rounded-lg mb-4"
-          />
+          <div key={i} className="bg-white shadow-md rounded-lg mb-4">
+            <Page
+              pageNumber={i + 1}
+              width={Math.min(window.innerWidth - 32, 800)}
+              className="max-w-full h-auto"
+            />
+          </div>
         ))}
       </Document>
     </div>
   );
 }
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
-).toString();

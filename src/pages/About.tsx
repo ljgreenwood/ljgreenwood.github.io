@@ -25,18 +25,17 @@ function About() {
         </h1>
         <ul className="text-gray-700 space-y-1 text-md">
           <p className="pt-0 p-6">
-            My focus is applying mathematical principles such as circuit
-            optimization and automata theory in hardware design. Of particular
-            interest to me are System-on-Chip (SoC) design and FPGAs, which
-            enable rapid prototyping, on-board debugging, and deployment of
-            functionality without the lengthy ASIC fabrication process. I am
-            also interested in how we can expand hardware backing ISAs like
-            RISC-V to be competitive in industry and begin experimenting with
-            ISAs extensible to Photonic Integrated Circuits (PICs).
+            My focus is applying formal proof to verify logical function in
+            hardware design. Of particular interest to me are FPGAs, which
+            enable rapid prototyping and on-board debugging of a variety of
+            device architectures. I am also interested in how we can expand
+            hardware backing ISAs like RISC-V to be competitive in industry and
+            begin interfacing with PICs to accelerate compute stacks.
           </p>
           <p className="pt-0 p-6">
             Aside from academics, I enjoy writing about what I learn, reading
-            classic novels, playing piano, and training for sport.
+            classic novels, playing piano, and training for sport (primarily
+            triathlon, climbing, and rowing).
           </p>
         </ul>
 
