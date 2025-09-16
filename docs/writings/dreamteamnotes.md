@@ -1,3 +1,5 @@
+# Team Selections
+
 Cardiac Data Device :: Aarnav
 * Continuous blood pressure monitor - estimated constantly
 * PCB, Mech Design, ML Integration, Arduino
@@ -18,7 +20,7 @@ FTC Feeding Tube Cleaner :: Selene
 * CAD, Circuitry/PCB, Programming
 BRAND NEW!
 
-Launchpad :: Manuel CONTACT MANUEL TO DO VOLUNTEER WORK (EXTRA)
+Launchpad :: Manuel 
 * Biofluid Analyzer
 * CAD, PCB, Python, Circuitry
 Project Eval

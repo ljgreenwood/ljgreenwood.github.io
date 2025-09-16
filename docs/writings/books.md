@@ -9,6 +9,8 @@
 
 ### To Read:
 * The Biomechanics of Rowing : Valery Kleshnev
+* GUNTER Nonlinear Optics and Materials
+* Shih Introduction to Quantum Optics
 
 ### Completed:
 * ~~Can't Hurt Me : David Goggins~~
