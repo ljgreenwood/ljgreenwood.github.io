@@ -9,12 +9,34 @@ db_path = "/mnt/c/Users/lucas/AppData/Roaming/Mozilla/Firefox/Profiles/qiejfv27.
 conn = sqlite3.connect(db_path) # connect to the database referenced by places.sqlite
 cursor = conn.cursor()
 
+# query = """
+# SELECT moz_bookmarks.title, moz_places.url
+# FROM moz_bookmarks
+# JOIN moz_places ON moz_bookmarks.fk = moz_places.id
+# WHERE moz_bookmarks.title IS NOT NULL
+# ORDER BY moz_bookmarks.dateAdded DESC;
+# """
+
 query = """
-SELECT moz_bookmarks.title, moz_places.url
-FROM moz_bookmarks
-JOIN moz_places ON moz_bookmarks.fk = moz_places.id
-WHERE moz_bookmarks.title IS NOT NULL
-ORDER BY moz_bookmarks.dateAdded DESC;
+WITH RECURSIVE folders(id) AS (
+  SELECT id
+  FROM moz_bookmarks
+  WHERE title = 'To-Read' AND type = 2
+  
+  UNION ALL
+  
+  SELECT b.id
+  FROM moz_bookmarks b
+  JOIN folders f ON b.parent = f.id
+  WHERE b.type = 2
+)
+SELECT bm.title, p.url
+FROM moz_bookmarks bm
+JOIN moz_places p ON bm.fk = p.id
+WHERE bm.parent IN (SELECT id FROM folders)
+  AND bm.title IS NOT NULL
+ORDER BY bm.dateAdded DESC;
+
 """
 
 with open("../public/docs/writings/bookmarks.md", "w", encoding="utf-8") as f:
